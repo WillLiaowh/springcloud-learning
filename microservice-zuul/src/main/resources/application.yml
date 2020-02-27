@@ -1,0 +1,45 @@
+server:
+  port: 9567
+
+
+spring:
+  application:
+    name: microservice-zuul
+  profiles:
+    active: dev
+
+---
+
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: microservice-zuul-9567m
+    prefer-ip-address: true
+
+
+
+zuul:
+  routes:
+    test.serviceId: microservice-provider
+    test.path: /myservice/**
+  ignored-services: "*"
+  prefix: /test
+
+
+
+
+spring:
+  profiles: dev
+  application:
+    name: dev
+
+---
+
+spring:
+  profiles: test
+  application:
+    name: test

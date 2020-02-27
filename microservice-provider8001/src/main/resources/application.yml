@@ -1,0 +1,29 @@
+server:
+  port: 8001
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+spring:
+  application:
+    name: microservice-provider
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/cloud8001
+    username: root
+    password: liaowh123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: 8001
+    prefer-ip-address: true
+
+info:
+  app.name: 1
+  company.name: 2
+  build.artifactId: 3
+  build.version: 4
